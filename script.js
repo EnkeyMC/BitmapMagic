@@ -1,8 +1,9 @@
 var bmpInput = document.getElementById("bmp-source");
 bmpInput.addEventListener("change", handleBMPInput, false);
 
-var bmp;
+var bmp = null;
 var canvas = document.getElementById("bitmap-render");
+setInterval(update, 500);
 
 function handleBMPInput (e) {
 	var file = e.target.files[0];
@@ -18,11 +19,28 @@ function processImage (e) {
 
 	var context = canvas.getContext('2d');
 	bmp.render(canvas);
-	setInterval(update, 500);
 }
 
 function update () {
 	var context = canvas.getContext('2d');
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	bmp.render(canvas);
+	if (bmp != null){	
+		canvas.style.maxWidth = canvas.width + "px";
+		canvas.width = bmp.getWidth();
+		canvas.height = bmp.getHeight();
+		bmp.render(canvas);
+	}
+}
+
+function flip (vertical) {
+	if (bmp != null)
+		if(vertical)
+			bmp.flip(Direction.VERTICAL);
+		else
+			bmp.flip(Direction.HORIZONTAL);
+}
+
+function rotate (ccw) {
+	if (bmp != null)
+		bmp.rotate(ccw);
 }
