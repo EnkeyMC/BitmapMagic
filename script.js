@@ -3,7 +3,7 @@ bmpInput.addEventListener("change", handleBMPInput, false);
 
 var bmp = null;
 var canvas = document.getElementById("bitmap-render");
-setInterval(update, 500);
+setInterval(update, 200);
 
 function handleBMPInput (e) {
 	var file = e.target.files[0];

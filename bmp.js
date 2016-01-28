@@ -18,12 +18,12 @@ BMP.prototype = {
 
   	// ccw (counter clockwise) = true, false
   	rotate:function (ccw) {
-      var rotated = new Uint8Array(this.bitmap.pixels.length);
       var byteCount = Math.ceil(this.bitmap.infoheader.biBitCount / 8);
       var width = this.bitmap.infoheader.biWidth;
       var height = this.bitmap.infoheader.biHeight;
       var stride = this.bitmap.stride;
       var newStride = Math.floor((this.bitmap.infoheader.biBitCount * height + 31) / 32) * 4;
+      var rotated = new Uint8Array(width * newStride * byteCount);
       var indexSrc;
       var indexDst;
 
