@@ -77,7 +77,7 @@ BMP.prototype = {
   			}
   		}else{
         for (var y = 0; y < height; y++) {
-          calcY = rowWidth + stride * y;
+          calcY = stride + stride * y;
 
           for (var x = 0; x / byteCount < (rowWidth / byteCount) / 2; x += byteCount){
             inverse = rowWidth - x - byteCount;
