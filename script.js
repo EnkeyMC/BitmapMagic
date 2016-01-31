@@ -16,8 +16,7 @@ function processImage (e) {
 	var buffer = e.target.result; // get result from FileReader
 	bmp = new BMP(buffer); // see bmp.js for class implementation
 
-	var context = canvas.getContext('2d');
-	bmp.render(canvas);
+	update();
 }
 
 function update () {
@@ -32,7 +31,31 @@ function update () {
 		canvas.height = bmp.getHeight();
 		// render bitmap
 		bmp.render(canvas);
-	}
+        
+        var fileheader = bmp.getFileHeader();
+        var infoheader = bmp.getInfoHeader();
+        
+        // write header values
+        document.getElementById("bfType").innerHTML = fileheader.bfType;
+        document.getElementById("bfSize").innerHTML = fileheader.bfSize;
+        document.getElementById("bfReserved1").innerHTML = fileheader.bfReserved1;
+        document.getElementById("bfReserved2").innerHTML = fileheader.bfReserved2;
+        document.getElementById("bfOffBits").innerHTML = fileheader.bfOffBits;
+        
+        document.getElementById("biSize").innerHTML = infoheader.biSize;
+        document.getElementById("biWidth").innerHTML = infoheader.biWidth;
+        document.getElementById("biHeight").innerHTML = infoheader.biHeight;
+        document.getElementById("biPlanes").innerHTML = infoheader.biPlanes;
+        document.getElementById("biBitCount").innerHTML = infoheader.biBitCount;
+        document.getElementById("biCompression").innerHTML = infoheader.biCompression;
+        document.getElementById("biSizeImage").innerHTML = infoheader.biSizeImage;
+        document.getElementById("biXPelsPerMeter").innerHTML = infoheader.biXPelsPerMeter;
+        document.getElementById("biYPelsPerMeter").innerHTML = infoheader.biYPelsPerMeter;
+        document.getElementById("biClrUsed").innerHTML = infoheader.biClrUsed;
+        document.getElementById("biClrImportant").innerHTML = infoheader.biClrImportant;
+
+
+	}    
 }
 
 // vertical = true, false

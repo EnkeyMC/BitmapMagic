@@ -42,12 +42,18 @@
               position: fixed;
               width: 100%;
               bottom: 0;
+              z-index: 50;
           }
           
           footer p {
               float: right;
               color: rgba(255,255,255,0.5);
               padding-right: 12px;
+          }
+          
+          .headers {
+              width: 100%;
+              margin: 0 !important;
           }
       </style>
 
@@ -91,11 +97,11 @@
               <div class="row">
                 <div class="col s3">    
                   <div class="collection">
-                    <a href="#" class="collection-item waves-effect waves-teal" onclick="rotate(true)">Rotate left</a>
-                    <a href="#" class="collection-item waves-effect waves-teal" onclick="rotate(false)">Rotate right</a>
-                    <a href="#" class="collection-item waves-effect waves-teal" onclick="flip(true)">Flip vertical</a>
-                    <a href="#" class="collection-item waves-effect waves-teal" onclick="flip(false)">Flip horizontal</a>                    
-                    <a href="#" class="collection-item waves-effect waves-teal" onclick="save()">Save (works for 24bit only)</a>
+                    <a href="" class="collection-item waves-effect waves-teal" onclick="rotate(true)">Rotate left</a>
+                    <a href="" class="collection-item waves-effect waves-teal" onclick="rotate(false)">Rotate right</a>
+                    <a href="" class="collection-item waves-effect waves-teal" onclick="flip(true)">Flip vertical</a>
+                    <a href="" class="collection-item waves-effect waves-teal" onclick="flip(false)">Flip horizontal</a>      
+                    <a href="" class="collection-item waves-effect waves-teal" onclick="save()">Save (works for 24bit only)</a>
 
                   </div>
                 </div>
@@ -108,9 +114,60 @@
             </div>
           </div>
         </div>
+            
+        <div class="row">
+            <div class="col s12">
+                <div class="z-depth-1">
+                    <div class="row headers">
+                        <div class="col s6">
+                            <h5>File header</h5>
+                            <dl>
+                                <dt>Type</dt>
+                                <dd id="bfType">0</dd>
+                                <dt>Size</dt>
+                                <dd id="bfSize">0</dd>
+                                <dt>Reserved #1</dt>
+                                <dd id="bfReserved1">0</dd>
+                                <dt>Reserved #2</dt>
+                                <dd id="bfReserved2">0</dd>
+                                <dt>Bit offset</dt>
+                                <dd id="bfOffBits">0</dd>
+                            </dl>
+                        </div>  
+                        <div class="col s6">
+                            <h5>Information header</h5>
+                            <dl>
+                                <dt>Size</dt>
+                                <dd id="biSize">0</dd>
+                                <dt>Width</dt>
+                                <dd id="biWidth">0</dd>
+                                <dt>Hieght</dt>
+                                <dd id="biHeight">0</dd>
+                                <dt>Planes</dt>
+                                <dd id="biPlanes">0</dd>
+                                <dt>Bit depth</dt>
+                                <dd id="biBitCount">0</dd>
+                                <dt>Compression</dt>
+                                <dd id="biCompression">0</dd>
+                                <dt>Image Size</dt>
+                                <dd id="biSizeImage">0</dd>
+                                <dt>X pixels per meter</dt>
+                                <dd id="biXPelsPerMeter">0</dd>
+                                <dt>Y pixels per meter</dt>
+                                <dd id="biYPelsPerMeter">0</dd>
+                                <dt>Clr used</dt>
+                                <dd id="biClrUsed">0</dd>
+                                <dt>Clr important</dt>
+                                <dd id="biClrImportant">0</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div> 
       
-      <footer class="cyan darken-4">
+      <footer class="cyan darken-4 z-depth-2">
         <div class="container">
             <p>&copy; 2016 Martin Omacht, All rights reserved</p>
         </div>

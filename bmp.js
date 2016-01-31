@@ -249,5 +249,13 @@ BMP.prototype = {
 
     getHeight: function () {
       return this.bitmap.infoheader.biHeight;
+    },
+    
+    getFileHeader: function (){
+        return this.bitmap.fileheader;
+    },
+    
+    getInfoHeader: function () {
+        return this.bitmap.infoheader;
     }
 };
